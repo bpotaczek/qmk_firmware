@@ -83,7 +83,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define BACKLIGHT_DISABLE_WHEN_USB_SUSPENDED 0
 
 // disable backlight after timeout in minutes, 0 = no timeout
-#define BACKLIGHT_DISABLE_AFTER_TIMEOUT 0
+#define BACKLIGHT_DISABLE_AFTER_TIMEOUT 5
 
 // These define which keys in the matrix are alphas/mods
 // Used for backlight effects so colors are different for

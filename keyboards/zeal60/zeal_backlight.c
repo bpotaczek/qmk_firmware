@@ -28,8 +28,8 @@ zeal_backlight_config g_config = {
 	.color_1 = { .h = 0, .s = 255, .v = 255 },
 	.color_2 = { .h = 127, .s = 255, .v = 255 },
 	.caps_lock_indicator = { .color = { .h = 0, .s = 0, .v = 255 }, .index = 255 },
-	.layer_1_indicator = { .color = { .h = 0, .s = 0, .v = 255 }, .index = 255 },
-	.layer_2_indicator = { .color = { .h = 0, .s = 0, .v = 255 }, .index = 255 },
+	.layer_1_indicator = { .color = { .h = 140, .s = 87, .v = 255 }, .index = 254 },
+	.layer_2_indicator = { .color = { .h = 227, .s = 81, .v = 255 }, .index = 254 },
 	.layer_3_indicator = { .color = { .h = 0, .s = 0, .v = 255 }, .index = 255 },
 	.alphas_mods = {
 		BACKLIGHT_ALPHAS_MODS_ROW_0,
