@@ -22,7 +22,9 @@ enum zeal60_keycodes {
 	S2_INC,
 	S2_DEC,
 	FN_MO13,
-	FN_MO23
+	FN_MO23,
+	FN_TG13,
+	FN_TG23
 };
 
 // Zeal60 specific "action functions"

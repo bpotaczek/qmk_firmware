@@ -278,30 +278,55 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record)
 			if (record->event.pressed)
 			{
 				layer_on(1);
-				update_tri_layer(1, 2, 3);
+				update_tri_layer(1, 3, 4);
 			}
 			else
 			{
 				layer_off(1);
-				update_tri_layer(1, 2, 3);
+				update_tri_layer(1, 3, 4);
 			}
 			return false;
 			break;
 		case FN_MO23:
 			if (record->event.pressed)
 			{
-				layer_on(2);
-				update_tri_layer(1, 2, 3);
+				layer_on(3);
+				update_tri_layer(1, 3, 4);
 			}
 			else
 			{
-				layer_off(2);
-				update_tri_layer(1, 2, 3);
+				layer_off(3);
+				update_tri_layer(1, 3, 4);
+			}
+			return false;
+			break;
+		case FN_TG13:
+			if (record->event.pressed)
+			{
+				if (layer_state << 1) {
+					layer_off(1);
+				} else {
+					layer_on(1);
+				}
+			}
+			return false;
+			break;
+		case FN_TG23:
+			if (record->event.pressed)
+			{
+				if (layer_state << 2) {
+					layer_off(2);
+				} else {
+					layer_on(2);
+				}
 			}
 			return false;
 			break;
 	}
-	
+	// if (record->event.pressed)
+	// {
+	// 	backlight_effect_changekey(record->event.key.row, record->event.key.col);
+	// }
 	return process_record_user(keycode, record);
 }
 
