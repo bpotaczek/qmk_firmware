@@ -9,6 +9,9 @@
         "*.h": "c",
         "*.c": "c",
         "*.cpp": "cpp",
-        "*.hpp": "cpp"
+        "*.hpp": "cpp",
+        "__locale": "c",
+        "bitset": "c",
+        "locale": "c"
     }
 }

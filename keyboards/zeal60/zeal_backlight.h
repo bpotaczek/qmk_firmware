@@ -75,6 +75,7 @@ void backlight_color_2_hue_decrease(void);
 void backlight_color_2_sat_increase(void);
 void backlight_color_2_sat_decrease(void);
 
+void backlight_effect_changekey(uint8_t row, uint8_t column);
 
 
 void *backlight_get_key_color_eeprom_address(uint8_t led);

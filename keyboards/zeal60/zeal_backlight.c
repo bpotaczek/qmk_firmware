@@ -25,11 +25,11 @@ zeal_backlight_config g_config = {
 	.brightness = 255,
 	.effect = 255, // Default to RGB test, so Zeal can flash and test in one pass!
 	.effect_speed = 0,
-	.color_1 = { .h = 0, .s = 255, .v = 255 },
+	.color_1 = { .h = 140, .s = 87, .v = 255 },
 	.color_2 = { .h = 127, .s = 255, .v = 255 },
 	.caps_lock_indicator = { .color = { .h = 0, .s = 0, .v = 255 }, .index = 255 },
-	.layer_1_indicator = { .color = { .h = 0, .s = 0, .v = 255 }, .index = 255 },
-	.layer_2_indicator = { .color = { .h = 0, .s = 0, .v = 255 }, .index = 255 },
+	.layer_1_indicator = { .color = { .h = 255, .s = 82, .v = 255 }, .index = 254 },
+	.layer_2_indicator = { .color = { .h = 227, .s = 81, .v = 255 }, .index = 254 },
 	.layer_3_indicator = { .color = { .h = 0, .s = 0, .v = 255 }, .index = 255 },
 	.alphas_mods = {
 		BACKLIGHT_ALPHAS_MODS_ROW_0,
@@ -478,6 +478,73 @@ void backlight_effect_raindrops(bool initialize)
 		}
 	}
 }
+// void backlight_effect_onchangekey(bool initialize) {
+// 	if (initialize) {
+// 		backlight_effect_all_off();
+// 	}
+// }
+
+// void backlight_effect_changekey(uint8_t row, uint8_t column)
+// {
+// 	if (row < 0 || column > 5 || g_config.effect != 11) {
+// 		return;
+// 	}
+// 	int16_t h1 = g_config.color_1.h;
+// 	int16_t h2 = g_config.color_2.h;
+// 	int16_t deltaH = h2 - h1;
+// 	deltaH /= 4;
+
+// 	// Take the shortest path between hues
+// 	if ( deltaH > 127 )
+// 	{
+// 		deltaH -= 256;
+// 	}
+// 	else if ( deltaH < -127 )
+// 	{
+// 		deltaH += 256;
+// 	}
+
+// 	int16_t s1 = g_config.color_1.s;
+// 	int16_t s2 = g_config.color_2.s;
+// 	int16_t deltaS = ( s2 - s1 ) / 4;
+
+// 	HSV hsv;
+// 	hsv.h = h1 + ( deltaH * ( rand() & 0x03 ) );
+// 	hsv.s = s1 + ( deltaS * ( rand() & 0x03 ) );
+// 	// Override brightness with global brightness control
+// 	hsv.v = g_config.brightness;
+// 	//backlight_set_key_color( row, column, hsv );
+// 	RGB rgb;
+// 	rgb = hsv_to_rgb( hsv );
+// 	uint8_t led;
+// 	map_row_column_to_led( row, column, &led );
+// 	backlight_set_color( led, rgb.r, rgb.g, rgb.b );
+// 	if (row > 0) {
+// 		backlight_effect_changekey(row-1, column-1);
+// 		if (column > 0) {
+// 			backlight_effect_changekey(row-1, column-1);			
+// 		}
+// 		if (column < 13) {
+// 			backlight_effect_changekey(row-1, column+1);			
+// 		}
+// 	}
+// 	if (column > 0) {
+// 		backlight_effect_changekey(row, column-1);			
+// 	}
+// 	if (column < 13) {
+// 		backlight_effect_changekey(row, column+1);			
+// 	}
+// 	if (row < 5) {
+// 		backlight_effect_changekey(row+1, column-1);
+// 		if (column > 0) {
+// 			backlight_effect_changekey(row+1, column-1);			
+// 		}
+// 		if (column < 13) {
+// 			backlight_effect_changekey(row+1, column+1);			
+// 		}
+// 	}
+// 	// backlight_set_color_all( rgb.r, rgb.g, rgb.b );
+// }
 
 void backlight_effect_cycle_all(void)
 {
@@ -786,6 +853,9 @@ ISR(TIMER3_COMPA_vect)
 		case 10:
 			backlight_effect_cycle_radial2();
 			break;
+		// case 11: 
+		// 	backlight_effect_onchangekey(initialize);
+		// 	break;
 		default:
 			backlight_effect_custom();
 			break;
