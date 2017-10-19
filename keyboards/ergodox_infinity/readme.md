@@ -3,23 +3,25 @@
 The Infinity is two completely independent keyboards, and needs to be flashed
 for the left and right halves seperately.  To flash them:
 
-  - Make sure you are in the top-level qmk_firmware directory
-
-  - Build the firmware with `make ergodox_infinity:keymapname`
+  - Build the firmware with `make infinity-keymapname`
 
   - Plug in the left hand keyboard only.
 
   - Press the program button (back of keyboard, above thumb pad).
 
-  - Install the firmware with `sudo make ergodox_infinity:keymapname:dfu-util`
+  - Install the firmware with `sudo make infinity-keymapname-dfu-util`
 
-  - Build right hand firmware with `make ergodox_infinity:keymapname MASTER=right`
+  - If more than 1 device found in dfu-util --list then run `dfu-util --device {deviceId} -D .build/ergodox_infinity_{keymapname}.bin -R`
+
+  - Build right hand firmware with `make infinity-keymapname MASTER=right`
 
   - Plug in the right hand keyboard only.
 
   - Press the program button (back of keyboard, above thumb pad).
 
-  - Install the firmware with `sudo make ergodox_infinity-keymapname-dfu-util MASTER=right`
+  - Install the firmware with `sudo make infinity-keymapname-dfu-util MASTER=right`
+
+  - If more than 1 device found in dfu-util --list then run `dfu-util --device {deviceId} -D .build/ergodox_infinity_{keymapname}.bin -R`
 
 More information on the Infinity firmware is available in the [TMK/chibios for
 Input Club Infinity Ergodox](https://github.com/fredizzimo/infinity_ergodox/blob/master/README.md)
@@ -44,5 +46,4 @@ You have a few options in how you flash the firmware:
 
 - For minor changes such as changing only the keymap without having updated
   any part of the firmware code itself, you can program only the MASTER half.
-
-- It is safest to program both halves though.
+  It is safest to program both halves though.
